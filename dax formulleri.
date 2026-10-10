@@ -1,0 +1,111 @@
+# power-bi-dax-formulleri
+  (AVERAGE Formülü) Ortalama Satış Mik. = AVERAGE(veri[Satış Miktarı])
+  (AVERAGEX Formülü) Ort % İade Oranı = AVERAGEX(veri,'veri'[İade Miktarı]/'veri'[Satış Miktarı])
+  (CALCULATE Formülü) = CALCULATE('Ölçü Tablosu'[(SUM Formülü) Toplam İade Adeti],'veri'[Satış Miktarı]<2000)
+  (MAX Formülü) Mak. İade Adeti = MAX('veri'[İade Miktarı])
+  (MIN Formülü) Min Satış Adeti = MIN('veri'[Satış Miktarı])
+  (SUM Formülü) Toplam İade Adeti = SUM(veri[İade Miktarı])
+  (SUMX Formülü) Brüt Satış Miktarı = SUMX(veri,'veri'[İade Miktarı]+'veri'[Satış Miktarı])
+  CALCULATE Fransaya ait Toplam Satış Adetleri = CALCULATE('Ölçü Tablosu'[TOPLAM Satış Miktarı],'veri'[Ülke]="France")
+  CALCULATE Germany = CALCULATE('Ölçü Tablosu'[TOPLAM Satış Miktarı],'veri'[Ülke]="Germany",'veri'[İade Miktarı]<30)
+  CALCULATE2 = CALCULATE('Ölçü Tablosu'[(SUM Formülü) Toplam İade Adeti],'veri'[Para Birimi]="EUR")
+  COUNT Formülü = COUNT(veri[Satış Miktarı])
+  COUNT Formülü | Ürün Adı Saydırma = COUNT(veri[Ürün Adı])
+  COUNTX Formülü = COUNTX('veri','veri'[Cinsiyet])
+  DISTINCCOUNT Formülü = DISTINCTCOUNT('Döviz Kuru'[Döviz Türü])
+  DIVIDE Ort İade Oranı = DIVIDE('Ölçü Tablosu'[Toplam İade Miktarı],'Ölçü Tablosu'[TOPLAM Satış Miktarı],0)
+  Erkeklerin İade Toplamı = CALCULATE('Ölçü Tablosu'[(SUM Formülü) Toplam İade Adeti],'veri'[Cinsiyet]="Male")
+  FILTER Formülü = SUMX(FILTER('veri','veri'[İade Miktarı]<20),'veri'[Satış Miktarı]+'veri'[İade Miktarı])
+  İade Mik. 20'den Küçük Olanların Toplam Satış Miktarı = SUMX(FILTER('veri','veri'[İade Miktarı]<20),'veri'[Satış Miktarı])
+  İade Miktarı 20'den Küçük Olanlar = COUNTX(FILTER('veri','veri'[İade Miktarı]<20),'veri'[İade Miktarı])
+  Kadınların İade Toplamı = CALCULATE('Ölçü Tablosu'[(SUM Formülü) Toplam İade Adeti],'veri'[Cinsiyet]="Female")
+  SUMX Toplam Ciro = SUMX('veri','veri'[Satış Miktarı]*'veri'[Fiyat])
+  SUMX Toplam Ödenen KDV = SUMX('veri','veri'[KDV]*'veri'[Fiyat]*'veri'[Satış Miktarı])
+  Toplam İade Miktarı = SUM(veri[İade Miktarı])
+  TOPLAM Satış Miktarı = SUM(veri[Satış Miktarı])
+  -----------------------------------------------
+Brüt Satışlar (Satış Mik.+İade Mik.) = SUMX('veri','veri'[İade Miktarı]+'veri'[Satış Miktarı])
+İade <20 Brüt Kar = AVERAGEX(FILTER('veri','veri'[İade Miktarı]<20),('veri'[Satış Miktarı]-'veri'[İade Miktarı])*'veri'[Fiyat])
+İade Mik. <20 Olanlar = SUMX(FILTER('veri','veri'[İade Miktarı]<20),'veri'[Satış Miktarı])
+İade Miktarı<30 Brüt Satış = SUMX(FILTER('veri','veri'[İade Miktarı]<30),'veri'[İade Miktarı]+'veri'[Satış Miktarı])
+İade<30 Ort. % İade Oranı = AVERAGEX(FILTER('veri','veri'[İade Miktarı]<30),'veri'[İade Miktarı]/'veri'[Satış Miktarı])  
+Mak. Fiyat = MAX(veri[Fiyat])
+Mak. İade Miktarı = MAX(veri[İade Miktarı])
+Min Fiyat = MIN(veri[Fiyat])
+Min İade Miktarı = MIN(veri[İade Miktarı])
+Ortalama Fiyat = AVERAGE(veri[Fiyat])
+Ortalama İade Adetleri = AVERAGE(veri[İade Miktarı])
+Ortalama İade Miktarı = AVERAGE(veri[İade Miktarı])
+Ortalama İade Oranı2 = AVERAGEX('veri','veri'[İade Miktarı]/'veri'[Satış Miktarı])
+Ödenen KDV = SUMX('veri','veri'[Fiyat]*'veri'[Satış Miktarı]*'veri'[KDV])
+Renk Adeti = COUNT(veri[Renk])
+Renk Adeti2 = DISTINCTCOUNT(veri[Renk])
+Toplam Brüt Satış Miktarı2 = SUMX('veri','veri'[İade Miktarı]+'veri'[Satış Miktarı])
+Toplam Ciro Tutarı = SUMX('veri','veri'[Fiyat]*'veri'[Satış Miktarı])
+Toplam Ciro2 = SUMX('veri','veri'[Satış Miktarı]*'veri'[Fiyat])
+Toplam Fiyat = SUM(veri[Fiyat])
+Toplam Satış Adeti = SUM(veri[Satış Miktarı])
+
+  Azərbaycan dilində aşağıdakı kimi sıraladım:
+
+AVERAGE(veri[Satış Miktarı]) — Verilən sütundakı satış miqdarlarının ədədi ortasını (orta qiymətini) tapır.
+
+AVERAGEX(veri, 'veri'[İade Miktarı] / 'veri'[Satış Miktarı]) — Cədvəli sətir-sətir gəzərək hər sətir üçün iade miqdarının satış miqdarına nisbətini hesablayır və alınan nəticələrin ortalamasını çıxarır.
+
+CALCULATE('Ölçü Tablosu'[(SUM Formülü) Toplam İade Adeti], 'veri'[Satış Miktarı] < 2000) — Satış miqdarı 2000-dən kiçik olan sətrlər üzrə ümumi iade ədədini hesablayır (filtr tətbiq edir).
+
+MAX('veri'[İade Miktarı]) — İade miqdarı sütunundakı ən yüksək (maksimum) dəyəri tapır.
+
+MIN('veri'[Satış Miktarı]) — Satış miqdarı sütunundakı ən kiçik (minimum) dəyəri tapır.
+
+SUM(veri[İade Miktarı]) — İade miqdarı sütunundakı bütün rəqəmləri toplayır.
+
+SUMX(veri, 'veri'[İade Miktarı] + 'veri'[Satış Miktarı]) — Hər sətir üçün iade və satış miqdarlarını toplayıb, alınan bütün nəticələrin cəmini hesablayır.
+
+CALCULATE('Ölçü Tablosu'[TOPLAM Satış Miktarı], 'veri'[Ülke] = "France") — Yalnız ölkəsi "France" olan sətrlər üzrə ümumi satış miqdarını hesablayır.
+
+CALCULATE('Ölçü Tablosu'[TOPLAM Satış Miktarı], 'veri'[Ülke] = "Germany", 'veri'[İade Miktarı] < 30) — Ölkəsi "Germany" və iade miqdarı 30-dan kiçik olan sətrlərin ümumi satış miqdarını tapır.
+
+CALCULATE('Ölçü Tablosu'[(SUM Formülü) Toplam İade Adeti], 'veri'[Para Birimi] = "EUR") — Valyutası "EUR" olan sətrlər üzrə ümumi iade ədədini hesablayır.
+
+COUNT(veri[Satış Miktarı]) — Satış miqdarı sütunundakı boş olmayan sətirlərin sayını tapır.
+
+COUNT(veri[Ürün Adı]) — Məhsul adı sütunundakı dolu xanaların sayını hesablayır.
+
+COUNTX('veri', 'veri'[Cinsiyet]) — Cədvəl üzərində sətirbəsətir işləyərək cinsiyyət sütunundakı boş olmayan sətrləri sayır.
+
+DISTINCTCOUNT('Döviz Kuru'[Döviz Türü]) — Valyuta növü sütunundakı təkrarolunmaz (unikal) valyuta növlərinin sayını tapır.
+
+DIVIDE('Ölçü Tablosu'[Toplam İade Miktarı], 'Ölçü Tablosu'[TOPLAM Satış Miktarı], 0) — Ümumi iade miqdarını ümumi satış miqdarına bölür, sıfıra bölünmə xətası olarsa nəticə olaraq 0 qaytarır.
+
+CALCULATE('Ölçü Tablosu'[(SUM Formülü) Toplam İade Adeti], 'veri'[Cinsiyet] = "Male") — Cinsiyyəti kişi ("Male") olanlar üzrə ümumi iade ədədini hesablayır.
+
+SUMX(FILTER('veri', 'veri'[İade Miktarı] < 20), 'veri'[Satış Miktarı] + 'veri'[İade Miktarı]) — İade miqdarı 20-dən kiçik olan sətrləri süzgəcdən keçirir və həmin sətrlər üçün satış ilə iade miqdarlarının cəmini hesablayıb toplayır.
+
+SUMX(FILTER('veri', 'veri'[İade Miktarı] < 20), 'veri'[Satış Miktarı]) — İade miqdarı 20-dən kiçik olan sətrləri seçib, həmin sətrlərin ümumi satış miqdarını toplayır.
+
+COUNTX(FILTER('veri', 'veri'[İade Miktarı] < 20), 'veri'[İade Miktarı]) — İade miqdarı 20-dən kiçik olan sətrləri süzgəcdən keçirib sayır.
+
+CALCULATE('Ölçü Tablosu'[(SUM Formülü) Toplam İade Adeti], 'veri'[Cinsiyet] = "Female") — Cinsiyyəti qadın ("Female") olanlar üzrə ümumi iade ədədini hesablayır.
+
+SUMX('veri', 'veri'[Satış Miktarı] * 'veri'[Fiyat]) — Hər sətir üçün satış miqdarını qiymətə vuraraq ümumi ciro məbləğini hesablayır.
+
+SUMX('veri', 'veri'[KDV] * 'veri'[Fiyat] * 'veri'[Satış Miktarı]) — Hər sətir üzrə KDV, qiymət və satış miqdarını bir-birinə vuraraq ümumi ödənilən KDV-ni hesablayır.
+
+AVERAGEX(FILTER('veri', 'veri'[İade Miktarı] < 20), ('veri'[Satış Miktarı] - 'veri'[İade Miktarı]) * 'veri'[Fiyat]) — İade miqdarı 20-dən kiçik olan sətrləri filtrləyir, hər sətir üçün (satış - iade) fərqi ilə qiymətin hasilini hesablayır və ortalamasını çıxarır.
+
+SUMX(FILTER('veri', 'veri'[İade Miktarı] < 30), 'veri'[İade Miktarı] + 'veri'[Satış Miktarı]) — İade miqdarı 30-dan kiçik olan sətrlər üzrə iade və satış miqdarını toplayıb cəmləyir.
+
+AVERAGEX(FILTER('veri', 'veri'[İade Miktarı] < 30), 'veri'[İade Miktarı] / 'veri'[Satış Miktarı]) — İade miqdarı 30-dan kiçik olan sətrlər üzrə iade faizinin (nisbətinin) ortalamasını hesablayır.
+
+MAX(veri[Fiyat]) — Qiymət sütunundakı ən yüksək dəyəri tapır.
+
+MIN(veri[Fiyat]) — Qiymət sütunundakı ən aşağı dəyəri tapır.
+
+AVERAGE(veri[Fiyat]) — Qiymətlərin ədədi ortalamasını tapır.
+
+AVERAGEX('veri', 'veri'[İade Miktarı] / 'veri'[Satış Miktarı]) — Hər sətir üçün iade miqdarının satış miqdarına nisbətini tapıb ümumi ortalamasını hesablayır.
+
+COUNT(veri[Renk]) — Rəng sütunundakı boş olmayan sətrlərin sayını tapır.
+
+DISTINCTCOUNT(veri[Renk]) — Rəng sütunundakı unikal (təkrarolunmaz) rənglərin sayını hesablayır.
